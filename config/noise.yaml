@@ -1,0 +1,11 @@
+husky_inekf:
+  ros__parameters:
+    noise:
+      gyroscope_std: 0.1
+      accelerometer_std: 0.1
+      gyroscope_bias_std: 0.1
+      accelerometer_bias_std: 0.1
+      wheel_vel_std: 0.1 # std for wheel velocity
+      camera_vel_std: 0.1
+      gps_vel_std: 0.1
+  
