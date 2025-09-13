@@ -26,13 +26,13 @@ void HuskyComms::declare_parameters()
     rcl_interfaces::msg::ParameterDescriptor imu_topic_desc;
     imu_topic_desc.description = "IMU数据话题名称";
     imu_topic_desc.additional_constraints = "必须是有效的ROS话题名称";
-    nh_->declare_parameter("settings.imu_topic", "/gx5_0/imu/data", imu_topic_desc);
+    nh_->declare_parameter("settings.imu_topic", "/imu/data", imu_topic_desc);
 
     // 关节状态话题参数
     rcl_interfaces::msg::ParameterDescriptor joint_topic_desc;
     joint_topic_desc.description = "关节状态话题名称，用于获取车轮编码器数据";
     joint_topic_desc.additional_constraints = "必须发布sensor_msgs/JointState消息";
-    nh_->declare_parameter("settings.joint_topic", "/joint_states", joint_topic_desc);
+    nh_->declare_parameter("settings.joint_topic", "/wheel_states", joint_topic_desc);
 
     // 车轮半径参数
     rcl_interfaces::msg::ParameterDescriptor wheel_radius_desc;
@@ -124,6 +124,7 @@ void HuskyComms::get_parameters()
     // 获取话题参数
     imu_topic_ = nh_->get_parameter("settings.imu_topic").as_string();
     joint_topic_ = nh_->get_parameter("settings.joint_topic").as_string();
+    RCLCPP_INFO(nh_->get_logger(), "subscribe imu topic: %s", imu_topic_);
 
     // 获取物理参数
     wheel_radius_ = nh_->get_parameter("settings.wheel_radius").as_double();

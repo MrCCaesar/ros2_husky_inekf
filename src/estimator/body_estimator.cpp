@@ -57,7 +57,7 @@ namespace husky_inekf
         rcl_interfaces::msg::ParameterDescriptor static_bias_desc;
         static_bias_desc.description = "启用静态偏置初始化模式";
         static_bias_desc.additional_constraints = "机器人静止时估计IMU偏置,提高初始化精度";
-        node_->declare_parameter("settings.static_bias_initialization", false, static_bias_desc);
+        node_->declare_parameter("settings.static_bias_initialization", true, static_bias_desc);
 
         // 使用IMU方向估计初始化偏置
         rcl_interfaces::msg::ParameterDescriptor init_bias_desc;
